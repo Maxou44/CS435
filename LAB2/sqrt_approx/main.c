@@ -21,7 +21,7 @@ SQRT_INIT
 	LDR r1, [r0] // x in R1
 	LDR r2, =0 // done = 0
 	LDR r3, =0 // a = 0
-	LDR r4, =0xFFFF // b = 0
+	LDR r4, =0xFFFF // b = 65535
 	LDR r5, =0xFFFFFFFF // c = -1
 
 SQRT_LOOP
