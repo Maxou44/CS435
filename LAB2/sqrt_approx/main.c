@@ -48,12 +48,12 @@ SQRT_DONE
 SQRT_END
 	CMP r2, #1 // Compare done and 1
 	BEQ SQRT_RETURN // Bigger or equal => SQRT_RETURN
-	BNE SQRT_CMP //
+	BNE SQRT_CMP // Not equal => SQRT_CMP
 
 SQRT_CMP
 	CMP r6, r5 // Compare c_old and c
-	BNE SQRT_LOOP
-	BEQ SQRT_RETURN
+	BNE SQRT_LOOP // Not equal => SQRT_LOOP
+	BEQ SQRT_RETURN // Bigger or equal => SQRT_RETURN
 
 SQRT_RETURN
 	MOV r0, r5 // Put result in r0
