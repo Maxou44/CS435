@@ -12,11 +12,6 @@ LAB EXERCISE - Analog input and PWM
 #include "mbed.h"
 #include "pindef.h"
 
-/*
-Define the PWM speaker output
-Define analog inputs
-*/
-
 //Define variables
 AnalogIn volume(A0);
 AnalogIn pitch(A1);
@@ -27,33 +22,12 @@ PwmOut speaker(D6);
  *----------------------------------------------------------------------------*/
 
 int main(){
-	speaker = 1;
-	float lastPitch = 0;
-	float newPitch = 0;
-	float lastVolume = 0;
-	float newVolume = 0;
-	
+	speaker = 0;
+	speaker.period(0);
 	while(1){
-		
-		// Pitch
-		newPitch = pitch.read();
-		if (lastPitch != newPitch)
-		{
-			lastPitch = newPitch;
-			speaker.period(newPitch);
-			wait(0.5);
-			
-		}
-		
-		// Volume
-		newVolume = volume.read();
-		if (lastVolume != newVolume)
-		{
-			lastVolume = newVolume;
-			speaker = newVolume;
-			wait(0.5);
-		}
-		
+		speaker = volume / 10;
+		speaker.period((3.125 - (3 * pitch)) / 1000);
+		wait_ms(1);
 	}
 }
 
