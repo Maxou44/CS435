@@ -312,31 +312,45 @@ int main(void)
  * @param  AxesRaw_t* p_axes
  * @retval None
  */
+
+
+tBleStatus send_char(char);
+
+void send_long(){
+		send_char(1);
+}
+
+void send_short(){
+		send_char(0);
+}
+
 void User_Process(AxesRaw_t* p_axes)
 {
   if(set_connectable){
     setConnectable();
     set_connectable = FALSE;
   }  
-
+	int i;
   /* Check if the user has pushed the button */
   if(BSP_PB_GetState(BUTTON_KEY) == RESET)
   {
-    while (BSP_PB_GetState(BUTTON_KEY) == RESET);
+		i = 0;
+    while (BSP_PB_GetState(BUTTON_KEY) == RESET)
+			i++;
     
     //BSP_LED_Toggle(LED2); //used for debugging (BSP_LED_Init() above must be also enabled)
     
     if(connected)
     {
       /* Update acceleration data */
-      p_axes->AXIS_X += 100;
-      p_axes->AXIS_Y += 100;
-      p_axes->AXIS_Z += 100;
-      //PRINTF("ACC: X=%6d Y=%6d Z=%6d\r\n", p_axes->AXIS_X, p_axes->AXIS_Y, p_axes->AXIS_Z);
-      Acc_Update(p_axes);
+     if (i > 500000)
+			 send_long();
+		 else
+			 send_short();
     }
   }
 }
+
 /* USER CODE END 4 */
 
 /**

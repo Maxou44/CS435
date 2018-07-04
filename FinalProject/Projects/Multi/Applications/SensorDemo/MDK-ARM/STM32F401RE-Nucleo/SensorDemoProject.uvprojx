@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F401xE,USE_STM32F4XX_NUCLEO</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Inc;..\..\..\..\..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\..\..\..\..\Drivers\BSP\STM32F4xx-Nucleo;..\..\..\..\..\..\Drivers\BSP\X-NUCLEO-IDB0xA1;..\..\..\..\..\..\Middlewares\ST\STM32_BlueNRG\SimpleBlueNRG_HCI\includes;..\..\..\..\..\..\Middlewares\ST\STM32_BlueNRG\Interface;..\..\..\..\..\..\Drivers\CMSIS\Include</IncludePath>
+              <IncludePath>..\..\Inc;..\..\..\..\..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\..\..\..\..\Drivers\BSP\STM32F4xx-Nucleo;..\..\..\..\..\..\Drivers\BSP\X-NUCLEO-IDB0xA1;..\..\..\..\..\..\Middlewares\ST\STM32_BlueNRG\SimpleBlueNRG_HCI\includes;..\..\..\..\..\..\Middlewares\ST\STM32_BlueNRG\Interface;..\..\..\..\..\..\Drivers\CMSIS\Include;..\..\..\..\..\..\mbed;..\..\..\..\..\..\mbed\TARGET_NUCLEO_F401RE\TARGET_STM\TARGET_NUCLEO_F401RE;..\..\..\..\..\..\mbed\TARGET_NUCLEO_F401RE</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

@@ -186,6 +186,24 @@ tBleStatus Free_Fall_Notify(void)
   return BLE_STATUS_SUCCESS;	
 }
 
+tBleStatus send_char(char value)
+{  
+  tBleStatus ret;    
+  uint8_t buff[1];
+
+	buff[0] = value;
+
+  ret = aci_gatt_update_char_value(accServHandle, accCharHandle, 0, 1, buff);
+	
+  if (ret != BLE_STATUS_SUCCESS){
+    PRINTF("Error while updating ACC characteristic.\n") ;
+    return BLE_STATUS_ERROR ;
+  }
+  return BLE_STATUS_SUCCESS;	
+}
+
+
+
 /**
  * @brief  Update acceleration characteristic value.
  *
@@ -197,10 +215,10 @@ tBleStatus Acc_Update(AxesRaw_t *data)
   tBleStatus ret;    
   uint8_t buff[6];
     
-  STORE_LE_16(buff,data->AXIS_X);
-  STORE_LE_16(buff+2,data->AXIS_Y);
-  STORE_LE_16(buff+4,data->AXIS_Z);
-	
+  STORE_LE_16(buff,'.');
+	STORE_LE_16(buff + 2,'-');
+  STORE_LE_16(buff + 4,'.');
+
   ret = aci_gatt_update_char_value(accServHandle, accCharHandle, 0, 6, buff);
 	
   if (ret != BLE_STATUS_SUCCESS){
